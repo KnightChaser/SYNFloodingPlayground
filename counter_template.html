@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8" />
+      <title>stat</title>
+   </head>
+   <body>
+        <h2><span id="count"></span></h2>
+   </body>
+   <script>
+      var count = document.getElementById("count");
+      var threshold = 30000000;                       // Don't forget to synchronize this threshold variable with server.py's!!
+
+      function isThisSynflooded(accumulativeSYNPacketQty) {
+         // redirect user to flag site!
+         accumulativeSYNPacketQty = parseInt(accumulativeSYNPacketQty);
+         if (accumulativeSYNPacketQty > threshold)
+            window.location.href = '/sh0wMYFLAGGGGGGGGGGGGG';
+      }
+
+      function formatNumberWithCommas(number) {
+         return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      }
+
+      function updater() {
+         fetch('/synflood_statistics')
+         .then(response => response.text())
+         .then(accumulativeSYNPacketQty => {
+            isThisSynflooded(accumulativeSYNPacketQty);
+            const formattedNumber = formatNumberWithCommas(accumulativeSYNPacketQty);
+            count.innerHTML = "Accumulative SYN packets: " + formattedNumber + " of " + formatNumberWithCommas(threshold);
+         });  // update page with new data
+      }
+
+      setInterval(updater, 100);
+   </script>
+</html>
