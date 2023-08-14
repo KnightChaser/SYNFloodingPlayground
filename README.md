@@ -76,7 +76,7 @@ def give_flag():
     # ...
 ```
 ```js
-<!-- counter_template.html (JS in HTML file) -->
+// counter_template.html (JS in HTML file)
 var count = document.getElementById("count");
 var threshold = 30000000;                       // Don't forget to synchronize this threshold variable with server.py's!!
 ```
