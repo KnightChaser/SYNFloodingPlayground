@@ -1,5 +1,12 @@
 # SYNFloodingPlayground
 > A simple web-based playground where you can freely test SYN Flooding with hping3! Written in Flask, Python3.
+<span>
+    <img src="https://img.shields.io/badge/Python-FFD43B?style=for-the-badge&logo=python&logoColor=blue">
+    <img src="https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white">
+    <img src="https://img.shields.io/badge/Ubuntu-E95420?style=for-the-badge&logo=ubuntu&logoColor=white">
+</span>
+<br>
+<br>
 
  **Welcome to [KnightChaser](https://github.com/KnightChaser)'s SYN Flooding experiment playground!** (You don't know what `SYN FLOODING ATTACK` mean yet? Then, check [Wikipedia's detailed explanation](https://en.wikipedia.org/wiki/SYN_flood). This would be helpful for understanding.)
 
@@ -39,7 +46,7 @@ stat --printf="%s" ./synfloodlog
 ```sh
 sudo hping3 -S 127.0.1.1 -p 5000 -a 192.168.0.1 --flood
 ```
- In my environment, only a single execution of that command can generate 500k ~ 1M SYN packets. If you run the command in multiple instances simultaneously, the attack speed will increase. (And highly likely they will consume more CPU and memory resources too.)
+ In my environment, only a single execution of that command can generate 500k ~ 1M SYN packets per second. If you run the command in multiple instances simultaneously, the attack speed will increase. (And highly likely they will consume more CPU and memory resources too.)
 
  You don't need to adhere to `hping3` only. Try to write a Python script, or use other tools too if you are interested!
 
